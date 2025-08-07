@@ -1,5 +1,6 @@
 # How tall is big ben?
 
+import turtle
 import random
 
 
@@ -287,3 +288,259 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Hogwarts Sorting Hat Algorithm
+
+gryffindor = 0
+hufflepuff = 0
+ravenclaw = 0
+slytherin = 0
+
+# Question 1
+answer = input("Do you enjoy taking risks? (yes/no): ").lower()
+if answer == "yes":
+    gryffindor += 1
+    slytherin += 1
+else:
+    hufflepuff += 1
+    ravenclaw += 1
+
+# Question 2
+answer = input("Do you value loyalty? (yes/no): ").lower()
+if answer == "yes":
+    hufflepuff += 2
+else:
+    slytherin += 1
+
+# Question 3
+answer = input("Do you consider yourself clever? (yes/no): ").lower()
+if answer == "yes":
+    ravenclaw += 2
+else:
+    gryffindor += 1
+
+# Question 4
+answer = input(
+    "Would you break the rules to achieve your goal? (yes/no): ").lower()
+if answer == "yes":
+    slytherin += 2
+else:
+    hufflepuff += 1
+
+# Determine the winner
+houses = {
+    "Gryffindor": gryffindor,
+    "Hufflepuff": hufflepuff,
+    "Ravenclaw": ravenclaw,
+    "Slytherin": slytherin
+}
+
+max_score = max(houses.values())
+
+# Find all houses with the max score in case of a tie
+top_houses = [house for house, score in houses.items() if score == max_score]
+
+if len(top_houses) == 1:
+    print("You belong to:", top_houses[0])
+else:
+    print("You could belong to one of these houses:", ", ".join(top_houses))
+
+
+# Setup screen
+screen = turtle.Screen()
+screen.bgcolor("lightblue")
+pen = turtle.Turtle()
+pen.speed(0)
+pen.pensize(2)
+
+
+def drawWall(x, y, width, height, battlements, color):
+    pen.penup()
+    pen.goto(x, y)
+    pen.pendown()
+    pen.color(color)
+    pen.begin_fill()
+    for _ in range(2):
+        pen.forward(width)
+        pen.left(90)
+        pen.forward(height)
+        pen.left(90)
+    pen.end_fill()
+
+    # Draw battlements
+    pen.penup()
+    pen.goto(x, y + height)
+    pen.setheading(0)
+    pen.pendown()
+    for _ in range(battlements):
+        pen.forward(width / battlements / 2)
+        pen.left(90)
+        pen.forward(10)
+        pen.right(90)
+        pen.forward(width / battlements / 2)
+        pen.right(90)
+        pen.forward(10)
+        pen.left(90)
+
+
+def drawTower(x, y, radius, height, color):
+    pen.penup()
+    pen.goto(x, y)
+    pen.color(color)
+    pen.begin_fill()
+    pen.pendown()
+    pen.circle(radius)
+    pen.end_fill()
+    pen.penup()
+    pen.goto(x - radius, y)
+    pen.pendown()
+    pen.begin_fill()
+    for _ in range(2):
+        pen.forward(radius * 2)
+        pen.left(90)
+        pen.forward(height)
+        pen.left(90)
+    pen.end_fill()
+
+
+def drawDoor(x, y, width, height, color):
+    pen.penup()
+    pen.goto(x, y)
+    pen.pendown()
+    pen.color(color)
+    pen.begin_fill()
+    for _ in range(2):
+        pen.forward(width)
+        pen.left(90)
+        pen.forward(height)
+        pen.left(90)
+    pen.end_fill()
+
+
+# Draw Castle Elements
+drawWall(-150, -100, 300, 100, 6, "grey")
+drawTower(-180, 0, 30, 60, "darkgrey")
+drawTower(150, 0, 30, 60, "darkgrey")
+drawDoor(-25, -100, 50, 75, "brown")
+
+pen.hideturtle()
+screen.mainloop()
+
+
+# Screen setup
+screen = turtle.Screen()
+screen.bgcolor("lightgreen")
+
+# Draw start and finish lines
+
+
+def draw_line(x_pos):
+    line = turtle.Turtle()
+    line.penup()
+    line.goto(x_pos, 150)
+    line.pendown()
+    line.right(90)
+    line.forward(300)
+    line.hideturtle()
+
+
+draw_line(-100)  # Start line
+draw_line(100)   # Finish line
+
+# Create turtles
+colors = ["red", "blue", "yellow", "purple"]
+racers = []
+
+start_y = 100
+for color in colors:
+    racer = turtle.Turtle()
+    racer.color(color)
+    racer.shape("turtle")
+    racer.penup()
+    racer.goto(-100, start_y)
+    start_y -= 50
+    racers.append(racer)
+
+# Race logic
+winner = None
+while not winner:
+    for racer in racers:
+        move = random.randint(1, 5)
+        racer.forward(move)
+        if racer.xcor() >= 100:
+            winner = racer
+            break
+
+# Show winner
+winner.write(f"{winner.color()[0].capitalize()} turtle wins!", font=(
+    "Arial", 16, "bold"))
+
+turtle.done()
+
+
+# Screen setup
+screen = turtle.Screen()
+screen.bgcolor("skyblue")
+myPen = turtle.Turtle()
+myPen.speed(0)
+
+# Draw crenellation pattern across the screen
+
+
+def draw_crenellation(repeats, block_width=20, block_height=15):
+    for _ in range(repeats):
+        myPen.left(90)
+        myPen.forward(block_height)
+        myPen.right(90)
+        myPen.forward(block_width)
+        myPen.right(90)
+        myPen.forward(block_height)
+        myPen.left(90)
+        myPen.forward(block_width)
+
+
+# Position turtle at start
+myPen.penup()
+myPen.goto(-screen.window_width() // 2, 0)
+myPen.pendown()
+draw_crenellation(repeats=20)
+
+myPen.hideturtle()
+screen.mainloop()
+
+
+def knightNameGenerator():
+    firstnames = ["Lancelot", "Charles", "Henry",
+                  "William", "James", "Richard", "Edward"]
+    nicknames = ["Brave", "Horrific", "Courageous", "Terrific",
+                 "Fair", "Conqueror", "Victorious", "Glorious", "Invincible"]
+    firstname = random.choice(firstnames)
+    nickname = random.choice(nicknames)
+    return f"{firstname} the {nickname}"
+
+
+def generateCoatOfArms():
+    colours = ["Red", "Golden", "Blue", "Purple", "White", "Silver"]
+    animals = ["Lion", "Dragon", "Unicorn", "Horse", "Tiger"]
+    colour = random.choice(colours)
+    animal = random.choice(animals)
+    return f"{colour} {animal}"
+
+
+def generateCoatOfArmsTwoColours():
+    colours = ["Red", "Golden", "Blue", "Purple", "White", "Silver"]
+    animals = ["Lion", "Dragon", "Unicorn", "Horse", "Tiger"]
+    colour1 = random.choice(colours)
+    colour2 = random.choice(colours)
+    animal = random.choice(animals)
+    if colour1 == colour2:
+        return f"{colour1} {animal}"
+    else:
+        return f"{colour1} and {colour2} {animal}"
+
+
+if __name__ == "__main__":
+    player1_name = knightNameGenerator()
+    player1_coa = generateCoatOfArmsTwoColours()
+    print(f"Player 1: Your name is {player1_name}")
+    print(f"Your coat of arms is a {player1_coa}")
