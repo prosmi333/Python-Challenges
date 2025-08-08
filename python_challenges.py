@@ -1,7 +1,6 @@
-# How tall is big ben?
-
-import turtle
 import random
+import turtle
+# How tall is big ben?
 
 
 def estimate_the_height(l, h, L):
@@ -216,7 +215,8 @@ def calculate_price(container, scoops, flake, sprinkles, coulis):
     # Base prices
     if container == "cone":
         base = 1.00
-    else:  # cup
+    else:
+        # cup
         base = 1.50
     scoop_price = {1: 1.00, 2: 2.00, 3: 2.50, 4: 3.00}
     total = base + scoop_price[scoops]
@@ -246,6 +246,7 @@ if __name__ == "__main__":
 
 
 # Investment
+
 
 def get_amount(prompt):
     while True:
@@ -346,167 +347,7 @@ else:
     print("You could belong to one of these houses:", ", ".join(top_houses))
 
 
-# Setup screen
-screen = turtle.Screen()
-screen.bgcolor("lightblue")
-pen = turtle.Turtle()
-pen.speed(0)
-pen.pensize(2)
-
-
-def drawWall(x, y, width, height, battlements, color):
-    pen.penup()
-    pen.goto(x, y)
-    pen.pendown()
-    pen.color(color)
-    pen.begin_fill()
-    for _ in range(2):
-        pen.forward(width)
-        pen.left(90)
-        pen.forward(height)
-        pen.left(90)
-    pen.end_fill()
-
-    # Draw battlements
-    pen.penup()
-    pen.goto(x, y + height)
-    pen.setheading(0)
-    pen.pendown()
-    for _ in range(battlements):
-        pen.forward(width / battlements / 2)
-        pen.left(90)
-        pen.forward(10)
-        pen.right(90)
-        pen.forward(width / battlements / 2)
-        pen.right(90)
-        pen.forward(10)
-        pen.left(90)
-
-
-def drawTower(x, y, radius, height, color):
-    pen.penup()
-    pen.goto(x, y)
-    pen.color(color)
-    pen.begin_fill()
-    pen.pendown()
-    pen.circle(radius)
-    pen.end_fill()
-    pen.penup()
-    pen.goto(x - radius, y)
-    pen.pendown()
-    pen.begin_fill()
-    for _ in range(2):
-        pen.forward(radius * 2)
-        pen.left(90)
-        pen.forward(height)
-        pen.left(90)
-    pen.end_fill()
-
-
-def drawDoor(x, y, width, height, color):
-    pen.penup()
-    pen.goto(x, y)
-    pen.pendown()
-    pen.color(color)
-    pen.begin_fill()
-    for _ in range(2):
-        pen.forward(width)
-        pen.left(90)
-        pen.forward(height)
-        pen.left(90)
-    pen.end_fill()
-
-
-# Draw Castle Elements
-drawWall(-150, -100, 300, 100, 6, "grey")
-drawTower(-180, 0, 30, 60, "darkgrey")
-drawTower(150, 0, 30, 60, "darkgrey")
-drawDoor(-25, -100, 50, 75, "brown")
-
-pen.hideturtle()
-screen.mainloop()
-
-
-# Screen setup
-screen = turtle.Screen()
-screen.bgcolor("lightgreen")
-
-# Draw start and finish lines
-
-
-def draw_line(x_pos):
-    line = turtle.Turtle()
-    line.penup()
-    line.goto(x_pos, 150)
-    line.pendown()
-    line.right(90)
-    line.forward(300)
-    line.hideturtle()
-
-
-draw_line(-100)  # Start line
-draw_line(100)   # Finish line
-
-# Create turtles
-colors = ["red", "blue", "yellow", "purple"]
-racers = []
-
-start_y = 100
-for color in colors:
-    racer = turtle.Turtle()
-    racer.color(color)
-    racer.shape("turtle")
-    racer.penup()
-    racer.goto(-100, start_y)
-    start_y -= 50
-    racers.append(racer)
-
-# Race logic
-winner = None
-while not winner:
-    for racer in racers:
-        move = random.randint(1, 5)
-        racer.forward(move)
-        if racer.xcor() >= 100:
-            winner = racer
-            break
-
-# Show winner
-winner.write(f"{winner.color()[0].capitalize()} turtle wins!", font=(
-    "Arial", 16, "bold"))
-
-turtle.done()
-
-
-# Screen setup
-screen = turtle.Screen()
-screen.bgcolor("skyblue")
-myPen = turtle.Turtle()
-myPen.speed(0)
-
-# Draw crenellation pattern across the screen
-
-
-def draw_crenellation(repeats, block_width=20, block_height=15):
-    for _ in range(repeats):
-        myPen.left(90)
-        myPen.forward(block_height)
-        myPen.right(90)
-        myPen.forward(block_width)
-        myPen.right(90)
-        myPen.forward(block_height)
-        myPen.left(90)
-        myPen.forward(block_width)
-
-
-# Position turtle at start
-myPen.penup()
-myPen.goto(-screen.window_width() // 2, 0)
-myPen.pendown()
-draw_crenellation(repeats=20)
-
-myPen.hideturtle()
-screen.mainloop()
+# Knight
 
 
 def knightNameGenerator():
@@ -544,3 +385,32 @@ if __name__ == "__main__":
     player1_coa = generateCoatOfArmsTwoColours()
     print(f"Player 1: Your name is {player1_name}")
     print(f"Your coat of arms is a {player1_coa}")
+
+# World in 2050
+
+message = "Rovvy, Gybvn!"
+
+for i in range(26):
+    decodedMessage = ""
+    for char in message:
+        if char.isalpha():
+            if char.islower():
+                decodedMessage += chr((ord(char) - ord('a') - i) %
+                                      26 + ord('a'))
+            else:
+                decodedMessage += chr((ord(char) - ord('A') - i) %
+                                      26 + ord('A'))
+        else:
+            decodedMessage += char
+    print(f"Caesar Cipher {i}: {decodedMessage}")
+
+# Fish and Chips
+
+a = "chips"
+b = "fish"
+
+c = a
+a = b
+b = c
+
+print(a + " and " + b)
