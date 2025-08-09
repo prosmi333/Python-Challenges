@@ -1,3 +1,5 @@
+import sys
+import time
 import random
 # How tall is big ben?
 
@@ -487,3 +489,35 @@ def dice_game():
 
 
 dice_game()
+
+# Typing Text Effect
+
+
+def typing_print(text, delay=0.05):
+    """Prints text one character at a time with a delay."""
+    for character in text:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(delay)
+
+
+def typing_input(prompt, delay=0.05):
+    """Shows prompt with typing effect, then waits for user input."""
+    for character in prompt:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(delay)
+    return input()
+
+
+def clear_screen():
+    """Clears the terminal screen."""
+    import os
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+if __name__ == "__main__":
+    clear_screen()
+    typing_print("Hello there! This is the typing‑effect in action.\n")
+    name = typing_input("What's your name? ")
+    typing_print(f"\nNice to meet you, {name}!\n")
