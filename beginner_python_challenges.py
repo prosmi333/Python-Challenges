@@ -521,3 +521,46 @@ if __name__ == "__main__":
     typing_print("Hello there! This is the typing‑effect in action.\n")
     name = typing_input("What's your name? ")
     typing_print(f"\nNice to meet you, {name}!\n")
+
+# Jack and the Beanstalk
+
+
+def beanstalk_height(hours):
+    height = 100
+    for hour in range(2, hours + 1):
+        height = height * 1.5 + 30
+    return height
+
+
+for h in [7, 12, 24]:
+    print(f"Hour {h}: {beanstalk_height(h):.2f} cm")
+
+# String Slicing
+
+# Defining the alphabet string
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+# Using indexing to get the first and last characters
+firstCharacter = alphabet[0]        # First character (A)
+lastCharacter = alphabet[25]        # Last character (Z)
+
+# Returning the full alphabet and the first/last characters
+print(alphabet)
+print("First character: " + firstCharacter)
+print("Last character: " + lastCharacter)
+
+# Using the find() method to find the position of certain letters
+posA = alphabet.find("A")
+posC = alphabet.find("C")
+print("Letter A is at position: " + str(posA))
+print("Letter C is at position: " + str(posC))
+
+# Checking if '@' is in the alphabet
+if "@" in alphabet:
+    print("Letter @ is in the alphabet!!!")
+else:
+    print("Letter @ is not in the alphabet!!!")
+
+# Trying to find the position of '@' (will return -1 if not found)
+posAt = alphabet.find("@")
+print("The position of @ in the alphabet is: " + str(posAt))
