@@ -564,3 +564,47 @@ else:
 # Trying to find the position of '@' (will return -1 if not found)
 posAt = alphabet.find("@")
 print("The position of @ in the alphabet is: " + str(posAt))
+
+# Higher or Lower Number Game
+
+
+def higher_or_lower_number_game():
+    """Play one round of Higher or Lower (number between 1 and 100)."""
+    secret = random.randint(1, 100)
+    attempts = 0
+
+    print("\nI've picked a number between 1 and 100. Try to guess it!")
+    while True:
+        guess_str = input("Your guess: ").strip()
+        # validate input
+        try:
+            guess = int(guess_str)
+        except ValueError:
+            print("Please enter a whole number (1-100).")
+            continue
+
+        if not 1 <= guess <= 100:
+            print("Number must be between 1 and 100.")
+            continue
+
+        attempts += 1
+
+        if guess < secret:
+            print("Higher 🔼")
+        elif guess > secret:
+            print("Lower 🔽")
+        else:
+            print(
+                f"Correct! 🎉 You guessed the number in {attempts} attempt{'s' if attempts != 1 else ''}.")
+            break
+
+        higher_or_lower_number_game()
+
+
+# The Missing Key
+a = int(input("Enter the first number:"))
+b = int(input("Enter the second number:"))
+while i < b:
+    final_value = a + a
+print(
+    f"The first number ({a}) multiplied by the second number({b} is equal to {final_value})")
