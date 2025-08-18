@@ -1,3 +1,4 @@
+import string
 import sys
 import time
 import random
@@ -638,3 +639,26 @@ if __name__ == "__main__":
     pupils = ["Joe", "Sonny", "Yassine", "Emma", "Ines",
               "Satveer", "Lily", "Reuben", "Lucy", "Tom", "Shmuunu"]
     take_register(pupils)
+
+# Password generator
+
+
+def shuffle(s: str) -> str:
+    temp = list(s)
+    random.shuffle(temp)
+    return ''.join(temp)
+
+
+def generate_password() -> str:
+    upper = random.sample(string.ascii_uppercase, 2)
+    lower = random.sample(string.ascii_lowercase, 2)
+    digits = random.sample(string.digits, 2)
+    punctuation = random.sample(string.punctuation, 2)
+
+    all_chars = upper + lower + digits + punctuation
+    random.shuffle(all_chars)
+    return ''.join(all_chars)
+
+
+if __name__ == "__main__":
+    print(generate_password())
