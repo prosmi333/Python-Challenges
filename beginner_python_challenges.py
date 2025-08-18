@@ -608,3 +608,33 @@ while i < b:
     final_value = a + a
 print(
     f"The first number ({a}) multiplied by the second number({b} is equal to {final_value})")
+
+# Class Register
+
+
+def take_register(pupils):
+    total = len(pupils)
+    present_count = 0
+
+    for pupil in pupils:
+        while True:
+            status = input(f"Is {pupil} present? (y/n): ").strip().lower()
+            if status in ('y', 'n'):
+                break
+            print("Invalid input. Please enter 'y' for present or 'n' for absent.")
+
+        if status == 'y':
+            present_count += 1
+
+    absent_count = total - present_count
+
+    print("\n--- Register Summary ---")
+    print(f"Total pupils:   {total}")
+    print(f"Present:        {present_count}")
+    print(f"Absent:         {absent_count}")
+
+
+if __name__ == "__main__":
+    pupils = ["Joe", "Sonny", "Yassine", "Emma", "Ines",
+              "Satveer", "Lily", "Reuben", "Lucy", "Tom", "Shmuunu"]
+    take_register(pupils)
