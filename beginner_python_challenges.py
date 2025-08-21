@@ -662,3 +662,53 @@ def generate_password() -> str:
 
 if __name__ == "__main__":
     print(generate_password())
+
+
+# How old will you be in...
+def age_calc():
+    year = 2017
+    age = int(input("How old are you? "))
+
+    for i in range(1, 51):
+        year += 1
+        age += 1
+        print(f"In {year}, you will be {age} years old.")
+
+
+age_calc()
+
+# Cake sale
+
+# Prices in GBP
+cupcakePrice = 0.40
+macaronPrice = 0.50
+cheesecakePrice = 0.70
+
+# Step 1: Input quantities from the user
+cupcakes = int(input("How many cupcakes do you plan to sell? "))
+macarons = int(input("How many macarons do you plan to sell? "))
+cheesecake = int(input("How many cheesecake slices do you plan to sell? "))
+
+# Step 2: Calculate total revenue
+total = (cupcakes * cupcakePrice +
+         macarons * macaronPrice +
+         cheesecake * cheesecakePrice)
+
+# Step 3: Display total money raised
+print(f"Total money raised = £{total:.2f}")
+
+# --- Extension Task: Profit Calculation ---
+
+expenses = 12.00  # cost of ingredients
+profit = total - expenses
+
+# Step 4: Display profit or loss
+print(f"Profit = £{profit:.2f}")
+
+# Step 5: Evaluate profit/loss/break even
+if profit > 0:
+    print("You made a profit!")
+elif profit < 0:
+    print("You made a loss!")
+else:
+    print("You broke even!")
