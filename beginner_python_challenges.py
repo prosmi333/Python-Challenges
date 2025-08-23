@@ -491,38 +491,6 @@ def dice_game():
 
 dice_game()
 
-# Typing Text Effect
-
-
-def typing_print(text, delay=0.05):
-    """Prints text one character at a time with a delay."""
-    for character in text:
-        sys.stdout.write(character)
-        sys.stdout.flush()
-        time.sleep(delay)
-
-
-def typing_input(prompt, delay=0.05):
-    """Shows prompt with typing effect, then waits for user input."""
-    for character in prompt:
-        sys.stdout.write(character)
-        sys.stdout.flush()
-        time.sleep(delay)
-    return input()
-
-
-def clear_screen():
-    """Clears the terminal screen."""
-    import os
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-
-if __name__ == "__main__":
-    clear_screen()
-    typing_print("Hello there! This is the typing‑effect in action.\n")
-    name = typing_input("What's your name? ")
-    typing_print(f"\nNice to meet you, {name}!\n")
-
 # Jack and the Beanstalk
 
 
@@ -535,36 +503,6 @@ def beanstalk_height(hours):
 
 for h in [7, 12, 24]:
     print(f"Hour {h}: {beanstalk_height(h):.2f} cm")
-
-# String Slicing
-
-# Defining the alphabet string
-alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-# Using indexing to get the first and last characters
-firstCharacter = alphabet[0]        # First character (A)
-lastCharacter = alphabet[25]        # Last character (Z)
-
-# Returning the full alphabet and the first/last characters
-print(alphabet)
-print("First character: " + firstCharacter)
-print("Last character: " + lastCharacter)
-
-# Using the find() method to find the position of certain letters
-posA = alphabet.find("A")
-posC = alphabet.find("C")
-print("Letter A is at position: " + str(posA))
-print("Letter C is at position: " + str(posC))
-
-# Checking if '@' is in the alphabet
-if "@" in alphabet:
-    print("Letter @ is in the alphabet!!!")
-else:
-    print("Letter @ is not in the alphabet!!!")
-
-# Trying to find the position of '@' (will return -1 if not found)
-posAt = alphabet.find("@")
-print("The position of @ in the alphabet is: " + str(posAt))
 
 # Higher or Lower Number Game
 
@@ -603,6 +541,7 @@ def higher_or_lower_number_game():
 
 
 # The Missing Key
+final_value = 0
 a = int(input("Enter the first number:"))
 b = int(input("Enter the second number:"))
 while i < b:
@@ -697,18 +636,29 @@ total = (cupcakes * cupcakePrice +
 # Step 3: Display total money raised
 print(f"Total money raised = £{total:.2f}")
 
-# --- Extension Task: Profit Calculation ---
+# Quote of the day
+daysOfTheWeek = ["Monday", "Tuesday", "Wednesday",
+                 "Thursday", "Friday", "Saturday", "Sunday"]
+# Initialise an empty list that will be stored our bank of quotes
+quotes = []
 
-expenses = 12.00  # cost of ingredients
-profit = total - expenses
+# Append a few quotes to our list
+quotes.append("The harder I work, the better I get.")
+quotes.append("A person who never made a mistake never tried anything new.")
+quotes.append("Nothing will work unless you do.")
+quotes.append(
+    "The best preparation for good work tomorrow is to do good work today.")
+quotes.append(
+    "Choose a job you love, and you will never have to work a day in your life.")
+quotes.append("Believe you can and you're halfway there.")
+quotes.append("The way to get started is to quit talking and start doing.")
+quotes.append("Fall seven times stand up eight.")
 
-# Step 4: Display profit or loss
-print(f"Profit = £{profit:.2f}")
+# Randomly pick a quote from our bank of quotes
+dailyQuote = random.choice(quotes)
 
-# Step 5: Evaluate profit/loss/break even
-if profit > 0:
-    print("You made a profit!")
-elif profit < 0:
-    print("You made a loss!")
-else:
-    print("You broke even!")
+print("############################")
+print("#     Quote of the Day     #")
+print("############################")
+print("")
+print(dailyQuote)
